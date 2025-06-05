@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Entre Letras y Café</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            background-color: #fefaf6;
+            color: #4b3b2b;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #6f4e37;
+            color: #f3e9dc;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(111,78,55,0.5);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            letter-spacing: 4px;
+            font-weight: normal;
+            font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+        }
+        nav {
+            margin-top: 10px;
+        }
+        nav a {
+            color: #f3e9dc;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #d2b48c;
+        }
+        main {
+            max-width: 960px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        section {
+            margin-bottom: 50px;
+        }
+        h2 {
+            border-bottom: 2px solid #6f4e37;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+            font-weight: normal;
+        }
+        .welcome-text {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            color: #5a4a3d;
+        }
+        .menu-list, .books-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 25px;
+        }
+        .menu-item, .book-item {
+            background: #fff9f2;
+            border: 1px solid #d2b48c;
+            border-radius: 8px;
+            box-shadow: 2px 2px 6px rgba(111,78,55,0.15);
+            padding: 15px 20px;
+            width: 280px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .menu-item:hover, .book-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 3px 5px 10px rgba(111,78,55,0.3);
+        }
+        .menu-item h3, .book-item h3 {
+            margin-top: 0;
+            color: #6f4e37;
+            font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+        }
+        .menu-item p, .book-item p {
+            margin: 10px 0 0;
+            font-style: italic;
+            color: #5a4a3d;
+        }
+        .contact-form {
+            max-width: 480px;
+            margin: 0 auto;
+            background: #fff9f2;
+            padding: 25px 30px;
+            border-radius: 10px;
+            border: 1px solid #d2b48c;
+            box-shadow: 2px 2px 8px rgba(111,78,55,0.2);
+        }
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #6f4e37;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 8px 10px;
+            margin-bottom: 15px;
+            border: 1px solid #d2b48c;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: 'Georgia', serif;
+            resize: vertical;
+        }
+        .contact-form button {
+            background-color: #6f4e37;
+            color: #f3e9dc;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-family: 'Georgia', serif;
+            transition: background-color 0.3s ease;
+        }
+        .contact-form button:hover {
+            background-color: #5a3d2b;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #6f4e37;
+            border-top: 1px solid #d2b48c;
+            font-size: 0.9rem;
+        }
+        .map-container {
+            max-width: 100%;
+            height: 300px;
+            margin: 0 auto 30px;
+            border: 1px solid #d2b48c;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 2px 2px 8px rgba(111,78,55,0.2);
+        }
+        .hours {
+            background: #fff9f2;
+            border: 1px solid #d2b48c;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 360px;
+            margin: 0 auto 40px;
+            box-shadow: 2px 2px 6px rgba(111,78,55,0.15);
+            text-align: center;
+        }
+        .hours h3 {
+            margin-top: 0;
+            color: #6f4e37;
+            font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+            margin-bottom: 15px;
+        }
+        .hours ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            color: #5a4a3d;
+            font-size: 1.1rem;
+        }
+        .hours ul li {
+            margin-bottom: 8px;
+        }
+        .social-links {
+            text-align: center;
+            margin: 30px 0 60px;
+        }
+        .social-links a {
+            display: inline-block;
+            margin: 0 15px;
+            color: #6f4e37;
+            font-size: 2rem;
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+        .social-links a:hover {
+            color: #d2b48c;
+        }
+        /* Iconos simples con Unicode */
+        .social-links a.facebook::before {
+            content: "📘";
+        }
+        .social-links a.instagram::before {
+            content: "📸";
+        }
+        .social-links a.twitter::before {
+            content: "🐦";
+        }
+        .events-list {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .event-item {
+            background: #fff9f2;
+            border: 1px solid #d2b48c;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            box-shadow: 2px 2px 6px rgba(111,78,55,0.15);
+            transition: transform 0.3s ease;
+        }
+        .event-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 3px 5px 10px rgba(111,78,55,0.3);
+        }
+        .event-item h3 {
+            margin-top: 0;
+            color: #6f4e37;
+            font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+        }
+        .event-item p {
+            color: #5a4a3d;
+            font-style: italic;
+        }
+        @media (max-width: 650px) {
+            .menu-list, .books-list {
+                flex-direction: column;
+                align-items: center;
+            }
+            .menu-item, .book-item {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>ENTRE LETRAS Y CAFÉ</h1>
+    <nav>
+        <a href="#bienvenida">Inicio</a>
+        <a href="#menu">Menú</a>
+        <a href="#libros">Libros Recomendados</a>
+        <a href="#eventos">Eventos</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+</header>
+
+<main>
+    <section id="bienvenida">
+        <h2>Bienvenidos a Entre Letras y Café</h2>
+        <p class="welcome-text">
+            Un espacio donde los amantes del buen café y la lectura encuentran su lugar ideal. Relájate, disfruta de una taza exquisita mientras descubres nuevas historias que alimentan el alma.
+        </p>
+    </section>
+
+    <section id="menu">
+        <h2>Menú</h2>
+        <div class="menu-list">
+            <article class="menu-item">
+                <h3>Café Espresso</h3>
+                <p>Un café intenso y aromático para los amantes del sabor puro.</p>
+            </article>
+            <article class="menu-item">
+                <h3>Capuchino</h3>
+                <p>Café espresso con espuma cremosa de leche y un toque de canela.</p>
+            </article>
+            <article class="menu-item">
+                <h3>Latte Vainilla</h3>
+                <p>Suave café con leche con un delicado sabor a vainilla.</p>
+            </article>
+            <article class="menu-item">
+                <h3>Té Verde</h3>
+                <p>Bebida refrescante y antioxidante, ideal para acompañar la lectura.</p>
+            </article>
+            <article class="menu-item">
+                <h3>Pastel de Zanahoria</h3>
+                <p>Delicioso pastel casero, perfecto para endulzar tu día.</p>
+            </article>
+        </div>
+    </section>
+
+    <section id="libros">
+        <h2>Libros Recomendados</h2>
+        <div class="books-list">
+            <article class="book-item">
+                <h3>"Cien Años de Soledad"</h3>
+                <p>Gabriel García Márquez - Un clásico de realismo mágico que no puedes perder.</p>
+            </article>
+            <article class="book-item">
+                <h3>"La Sombra del Viento"</h3>
+                <p>Carlos Ruiz Zafón - Misterio y literatura en las calles de Barcelona.</p>
+            </article>
+            <article class="book-item">
+                <h3>"El Principito"</h3>
+                <p>Antoine de Saint-Exupéry - Un cuento lleno de sabiduría y ternura para todas las edades.</p>
+            </article>
+            <article class="book-item">
+                <h3>"Don Quijote de la Mancha"</h3>
+                <p>Miguel de Cervantes - La obra maestra de la literatura española.</p>
+            </article>
+        </div>
+    </section>
+
+    <section id="eventos">
+        <h2>Eventos y Actividades</h2>
+        <div class="events-list">
+            <article class="event-item">
+                <h3>Noche de Lectura - Miércoles 15 Junio</h3>
+                <p>Ven a compartir y discutir tu libro favorito con otros amantes de la lectura. Café gratis para participantes.</p>
+            </article>
+            <article class="event-item">
+                <h3>Taller de Escritura Creativa - Sábado 25 Junio</h3>
+                <p>Aprende técnicas para escribir relatos y cuentos con nuestra invitada especial, la escritora Ana López.</p>
+            </article>
+            <article class="event-item">
+                <h3>Concierto Acústico - Viernes 8 Julio</h3>
+                <p>Música en vivo para acompañar tu café. Reserva tu lugar con anticipación.</p>
+            </article>
+        </div>
+    </section>
+
+    <section id="horarios">
+        <h2>Horarios</h2>
+        <div class="hours">
+            <h3>Horario de Atención</h3>
+            <ul>
+                <li>Lunes a Viernes: 8:00 AM - 9:00 PM</li>
+                <li>Sábados: 9:00 AM - 10:00 PM</li>
+                <li>Domingos: 10:00 AM - 6:00 PM</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="ubicacion">
+        <h2>Ubicación</h2>
+        <div class="map-container">
+            <!-- Mapa integrado de Google Maps: ejemplo ubicación en Madrid -->
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3036.366317061014!2d-3.7037909846043825!3d40.4167759793647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd42288f0c3ac2ed%3A0x6cc3cc4f5e4876f8!2sPuerta%20del%20Sol%2C%20Madrid!5e0!3m2!1ses!2ses!4v1696384208999!5m2!1ses!2ses"
+                width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
+    <section id="contacto">
+        <h2>Contacto</h2>
+        <form class="contact-form" action="#" method="POST">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" name="email" placeholder="tuemail@ejemplo.com" required />
+
+            <label for="mensaje">Mensaje:</label>
+            <textarea id="mensaje" name="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
+
+            <button type="submit">Enviar</button>
+        </form>
+
+        <div class="social-links" aria-label="Redes Sociales">
+            <a href="https://facebook.com" target="_blank" rel="noopener" class="facebook" title="Facebook"></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="instagram" title="Instagram"></a>
+            <a href="https://twitter.com" target="_blank" rel="noopener" class="twitter" title="Twitter"></a>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2025 Entre Letras y Café - Tu refugio de café y libros</p>
+    <p>Dirección: Calle Falsa 123, Madrid, España | Tel: +34 912 345 678</p>
+</footer>
+
+</body>
+</html>
